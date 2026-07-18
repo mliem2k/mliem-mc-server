@@ -26,9 +26,9 @@ without a top-level jar in `plugins/` are marked unconfirmed rather than guessed
 | ProtocolLib | unconfirmed | https://www.spigotmc.org/resources/protocollib.1997/ | Dependency for GrimAC and others |
 | GrimAC | unconfirmed | https://github.com/GrimAnticheat/Grim | Anticheat. `discord.yml` webhook is unset |
 | TAB | unconfirmed | https://github.com/NEZNAMY/TAB | Tablist/nametags. MySQL storage present but disabled (unused stock config) |
-| AuraSkills | unconfirmed | https://github.com/Archy-X/AuraSkills | RPG skills. SQL storage present but disabled |
-| MythicLib / MMOItems / MMOInventory | unconfirmed | https://gitlab.com/phoenix-dvpmt/mythiclib , https://www.mmoitems.net | Custom item/skill framework, large config tree under `plugins/MMOItems/` |
-| BetonQuest | unconfirmed | https://betonquest.org | Quest scripting |
+| AuraSkills | 2.2.3, **disabled** | https://github.com/Archy-X/AuraSkills | RPG skills. Jar lives in `plugins/backup/`, not `plugins/`, so Paper never loads it; confirmed inactive via the boot log (zero "Enabling AuraSkills" lines). Config dir left in place, not deleted |
+| MythicLib / MMOItems / MMOInventory | 1.6.2 / 6.10 / 1.8.1, **disabled** | https://gitlab.com/phoenix-dvpmt/mythiclib , https://www.mmoitems.net | Same as AuraSkills: all three jars live in `plugins/backup/`, confirmed inactive via the boot log. Config trees (the bulk of `plugins/MMOItems/`) left in place |
+| BetonQuest | **disabled** | https://betonquest.org | Same as above, jar in `plugins/backup/`, confirmed inactive |
 | Multiverse-Core / -NetherPortals / -Portals | unconfirmed | https://github.com/Multiverse | Multi-world management |
 | My_Worlds / BKCommonLib | unconfirmed | https://www.spigotmc.org/resources/my-worlds.39594/ | Per-world inventories, requires BKCommonLib |
 | Codex | unconfirmed | https://www.spigotmc.org/resources/codex.99043/ | MySQL storage present but disabled (unused stock config) |
