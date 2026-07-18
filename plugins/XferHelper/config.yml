@@ -1,0 +1,36 @@
+# Message sent to a player right before they're transferred. '&' codes are translated
+# to color codes. Leave empty ("") to disable the message entirely.
+message: "&a&l[Server] &fSwitching you to a better connection…"
+
+# Message sent once the player rejoins on the new host:port. Only fires for players this
+# plugin itself transferred (not on every join). Leave empty ("") to disable.
+welcome-message: "&a&l[Server] &fYou're now on the fast route!"
+
+# How many ticks (20 = 1 second) to wait after showing the message before actually
+# sending the Transfer packet, so the player has time to read it.
+delay-ticks: 40
+
+# Freeze the player for the entire delay-ticks window: no movement, no block breaking or
+# placing, no interacting, no attacking, and no taking damage. This is what stops the
+# transfer from landing mid-fight, mid-mining, or mid-anything else, since there's
+# nothing left for the player to be "mid" of once the countdown starts.
+freeze-player: true
+
+# Title and subtitle shown the instant a transfer is queued (only while freeze-player is
+# true). '&' codes are translated to color codes.
+title: "&a&lBetter connection found"
+subtitle: "&fHold tight, switching you to a faster route..."
+
+# Live countdown shown in the action bar, refreshed once a second. Use {seconds}.
+countdown: "&7Reconnecting in {seconds}s..."
+
+# Rewrites the server list ping's player sample so each entry is "name | path | address"
+# instead of just a name, so external status tooling that already polls this server's
+# port can tell which path and real address each online player is on, with no second
+# port or extra network route needed. Set to false to leave the sample untouched.
+expose-player-metadata: true
+
+# Labels used in that "path" field: origin-path-label for a player who hasn't been
+# transferred (yet), transfer-path-label once /xfer has fired for them.
+origin-path-label: "catcher"
+transfer-path-label: "relay"
