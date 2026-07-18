@@ -37,10 +37,12 @@ see `infra/README.md`'s "Bedrock/mobile cross-play" section for the specific
 upstream PacketEvents bug that forced that pin). AuthMe is still on disk, disabled,
 kept as a fallback rather than deleted.
 
-Gameplay-wise this is a heavily modded survival server: MythicLib/MMOItems for
-custom items and skills (the bulk of `plugins/MMOItems/`), AuraSkills for RPG-style
-leveling, BetonQuest for quest scripting, GrimAC for anticheat, LuckPerms for
+Gameplay-wise this is a modded survival server: GrimAC for anticheat, LuckPerms for
 permissions, and the usual EssentialsX/WorldGuard/WorldEdit/Multiverse baseline.
+MythicLib/MMOItems (custom items and skills), AuraSkills (RPG-style leveling), and
+BetonQuest (quest scripting) are present but disabled, their jars sit in
+`plugins/backup/`, not `plugins/`, so Paper never loads them; config trees are left
+on disk, not deleted. See `plugins.md` for the full list.
 Full list with versions and source links in `plugins.md`.
 
 ## Cloning
