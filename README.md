@@ -32,14 +32,23 @@ included here as the `infra/` submodule.
 Purpur 1.21.4 (`purpur.yml`), `online-mode=false` (auth is handled in-plugin, see
 below), behind [XferHelper](https://github.com/mliem2k/XferHelper) for the
 catcher/relay handoff and Geyser + Floodgate + ViaVersion + TransferTool for
-Bedrock/cross-version support. Auth is LibreLogin 0.23.1 (pinned, not the latest,
-see `infra/README.md`'s "Bedrock/mobile cross-play" section for the specific
-upstream PacketEvents bug that forced that pin). AuthMe is still on disk, disabled,
-kept as a fallback rather than deleted.
+Bedrock/cross-version support, with Geyser's `auth-type` set to `offline` so
+Bedrock/PE players can join without a linked Microsoft/Java account, matching the
+server's cracked-friendly Java side. Auth is **AuthMe** (not LibreLogin): both
+LibreLogin builds (0.23.1, pinned specifically to dodge a known upstream
+PacketEvents bug, and 0.24.0) sit disabled in `plugins/` as of 2026-07-18 and were
+never actually re-enabled after that fix was pinned, so AuthMe (kept originally as
+a fallback) has been the real, live auth plugin since. Confirmed working as of
+2026-07-19; deliberately left as-is rather than switching back, to not risk
+retriggering that crash.
 
-Gameplay-wise this is a modded survival server: GrimAC for anticheat, LuckPerms for
-permissions, and the usual EssentialsX/WorldGuard/WorldEdit/Multiverse baseline.
-MythicLib/MMOItems (custom items and skills), AuraSkills (RPG-style leveling), and
+Gameplay-wise this is a modded survival server: LuckPerms for permissions (three
+roles as of 2026-07-19: `default`/Member, `moderator`, `admin`, distinguished by
+chat/nametag color) and the usual EssentialsX baseline. **No anticheat is
+currently active** (GrimAC and its dependency ProtocolLib both sit disabled in
+`plugins/backup/`, confirmed via the live boot log). WorldGuard/WorldEdit and
+GriefPrevention are also disabled; FastAsyncWorldEdit (active) provides
+WorldEdit's functionality on its own. MythicLib/MMOItems (custom items and skills), AuraSkills (RPG-style leveling), and
 BetonQuest (quest scripting) are present but disabled, their jars sit in
 `plugins/backup/`, not `plugins/`, so Paper never loads them; config trees are left
 on disk, not deleted. See `plugins.md` for the full list.

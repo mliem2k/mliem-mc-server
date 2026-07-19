@@ -9,8 +9,8 @@ without a top-level jar in `plugins/` are marked unconfirmed rather than guessed
 | Plugin | Version | Source | Notes |
 |---|---|---|---|
 | Purpur | 1.21.4 | https://purpurmc.org | Server core, downgraded from 1.21.10 during the LibreLogin/PacketEvents fix, see the root `README.md` |
-| AuthMe | 5.7.0 | https://www.spigotmc.org/resources/authmereloaded.6269/ | Disabled (`.jar.disabled`), replaced by LibreLogin. Kept on disk, not deleted |
-| LibreLogin | 0.23.1 | https://github.com/kyngs/LibreLogin/releases | Active auth plugin. 0.24.0 also present but disabled, see root README for why 0.23.1 is pinned |
+| AuthMe | 5.7.0 | https://www.spigotmc.org/resources/authmereloaded.6269/ | **Active auth plugin** (corrected 2026-07-19; previously documented as disabled/replaced, which was wrong). Confirmed via live `/plugins` list and in-game login flow |
+| LibreLogin | 0.23.1 | https://github.com/kyngs/LibreLogin/releases | **Disabled** (`.jar.disabled`), confirmed 2026-07-19. 0.24.0 also present, also disabled. Pinned to 0.23.1 to dodge a known PacketEvents bug, but never actually re-enabled after that fix; AuthMe has been the real auth plugin since. See root README |
 | LuckPerms | 5.5.59 | https://luckperms.net | Permissions, storage-method h2 (local, no remote DB). Three groups as of 2026-07-19: `default` (base survival, aqua `§b` name color), `moderator` (inherits default + kick/mute/tp, yellow `§e`), `admin` (inherits moderator + wildcard `*` permission, red `§c`). Group data lives in LuckPerms' own H2 database, not a file in this repo |
 | EssentialsX (+ AntiBuild, Chat, Protect, Spawn) | 2.22.0 | https://essentialsx.net | |
 | FastAsyncWorldEdit | 2.15.3 (Paper build) | https://github.com/IntellectualSites/FastAsyncWorldEdit | |
