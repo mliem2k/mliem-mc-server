@@ -81,7 +81,7 @@ gameplay:
   # Bedrock prevents building and displaying blocks above Y127 in the Nether.
   # This config option works around that by changing the Nether dimension ID to the End ID.
   # The main downside to this is that the entire Nether will have the same red fog rather than having different fog for each biome.
-  nether-roof-workaround: false
+  nether-roof-workaround: true
 
   # Whether to show Bedrock Edition emotes to other Bedrock Edition players.
   emotes-enabled: true
@@ -159,7 +159,7 @@ notify-on-new-bedrock-update: true
 advanced:
   # Specify how many days player skin images will be cached to disk to save downloading them from the internet.
   # A value of 0 is disabled. (Default: 0)
-  cache-images: 0
+  cache-images: 7
 
   # Geyser updates the Scoreboard after every Scoreboard packet, but when Geyser tries to handle
   # a lot of scoreboard packets per second, this can cause serious lag.
