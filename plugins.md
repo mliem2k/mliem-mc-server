@@ -1,6 +1,9 @@
 # Installed plugins
 
-Pulled from the live server (`/var/lib/pufferpanel/servers/mliem/plugins/`) on 2026-07-18.
+Pulled from the live server (`/var/lib/pufferpanel/servers/mliem/plugins/`) on 2026-07-18,
+with corrections and config changes applied through 2026-07-20 (activation-status audit,
+Geyser/TAB/LuckPerms/Essentials changes) — see individual rows and the root `README.md`
+for what changed and when.
 Versions below are only listed where the jar filename or a matching entry in Paper's
 plugin-remap cache (`plugins/.paper-remapped/index.json`) confirmed one; plugins
 without a top-level jar in `plugins/` are marked unconfirmed rather than guessed
@@ -14,11 +17,11 @@ without a top-level jar in `plugins/` are marked unconfirmed rather than guessed
 | LuckPerms | 5.5.59 | https://luckperms.net | Permissions, storage-method h2 (local, no remote DB). Three groups as of 2026-07-19: `default` (base survival, aqua `§b` name color), `moderator` (inherits default + kick/mute/tp, yellow `§e`), `admin` (inherits moderator + wildcard `*` permission, red `§c`). Group data lives in LuckPerms' own H2 database, not a file in this repo |
 | EssentialsX (+ AntiBuild, Chat, Protect, Spawn) | 2.22.0 | https://essentialsx.net | |
 | FastAsyncWorldEdit | 2.15.3 (Paper build) | https://github.com/IntellectualSites/FastAsyncWorldEdit | |
-| Geyser-Spigot | unpinned, updated 2026-07-18 | https://geysermc.org | Bedrock protocol translation |
+| Geyser-Spigot | unpinned, updated 2026-07-18 | https://geysermc.org | Bedrock protocol translation. `auth-type` fixed 2026-07-19: was `online` (required a linked Java/Microsoft account, defeating the point of Floodgate), now `offline` so any Bedrock/Java client can join regardless of account ownership, matching this server's cracked-friendly auth model. Also: `advanced.cache-images` 0 → 7 (days) so skins survive the scale-to-zero relay's reconnects, `gameplay.nether-roof-workaround` false → true |
 | Floodgate | unpinned, updated 2026-07-18 | https://github.com/GeyserMC/Floodgate | Bedrock auth bypass, companion to Geyser |
 | ViaVersion | unpinned, updated 2026-07-18 | https://github.com/ViaVersion/ViaVersion | Multi-version support |
 | SkinsRestorer | unpinned, updated 2026-07-10 | https://skinsrestorer.net | |
-| XferHelper | 1.0.1 | https://github.com/mliem2k/XferHelper (this account's own plugin) | Exposes the Java Transfer packet as a console command, see `infra/` submodule |
+| XferHelper | 1.0.0 | https://github.com/mliem2k/XferHelper (this account's own plugin) | Exposes the Java Transfer packet as a console command, see `infra/` submodule. Corrected 2026-07-20: previously listed as 1.0.1, but the live boot log and `pom.xml` both confirm 1.0.0 |
 | TransferTool | 3 (release-3 asset) | https://github.com/onebeastchris/TransferTool/releases | A **Geyser extension**, lives in `plugins/Geyser-Spigot/extensions/`, not a Bukkit plugin |
 | WorldGuard / WorldEdit | **disabled** | https://enginehub.org/worldguard | Confirmed inactive 2026-07-19: jars live in `plugins/backup/`, not `plugins/`. FastAsyncWorldEdit (above) provides WorldEdit's functionality instead |
 | GriefPrevention | **disabled** | https://www.spigotmc.org/resources/griefprevention.1884/ | Confirmed inactive 2026-07-19: jar lives in `plugins/backup/`. Data/config dir named `GriefPreventionData`, left in place |
