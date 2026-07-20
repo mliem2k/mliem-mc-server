@@ -35,7 +35,9 @@ included here as the `infra/` submodule.
 ## The stack, briefly
 
 Purpur 1.21.4 (`purpur.yml`), `online-mode=false` (auth is handled in-plugin, see
-below), behind [XferHelper](https://github.com/mliem2k/XferHelper) for the
+below), behind [XferHelper](https://github.com/mliem2k/XferHelper) (v1.0.1 as of
+2026-07-20; also adds an open-to-everyone `/relaystatus` command that reports live
+relay/catcher/home-server/DNS status in chat) for the
 catcher/relay handoff and Geyser + Floodgate + ViaVersion + TransferTool for
 Bedrock/cross-version support, with Geyser's `auth-type` set to `offline` so
 Bedrock/PE players can join without a linked Microsoft/Java account, matching the
