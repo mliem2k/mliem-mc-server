@@ -35,7 +35,7 @@ included here as the `infra/` submodule.
 ## The stack, briefly
 
 Purpur 1.21.4 (`purpur.yml`), `online-mode=false` (auth is handled in-plugin, see
-below), behind [XferHelper](https://github.com/mliem2k/XferHelper) (v1.0.3 as of
+below), behind [XferHelper](https://github.com/mliem2k/XferHelper) (v1.0.4 as of
 2026-07-22; also adds an open-to-everyone `/relaystatus` command that reports live
 relay/catcher/home-server/DNS status in chat, a waiting lobby for players who join
 while the fast route isn't ready yet, and a relay-aware dynamic MOTD) for the
