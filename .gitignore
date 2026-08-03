@@ -1,8 +1,8 @@
-# Superpowers working files. Plans and the .superpowers state dir are local-only
-# scratch and must never be committed to any repo. Specs (docs/superpowers/specs/)
-# are intentionally NOT ignored, those are fine to commit.
+# Superpowers working files. Specs, plans and the .superpowers state dir are all
+# local-only scratch and must never be committed to any repo.
 .superpowers/
 docs/superpowers/plans/
+docs/superpowers/
 
 # macOS finder junk
 .DS_Store
