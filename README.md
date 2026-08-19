@@ -1,8 +1,8 @@
 # mliem-mc-server
 
 The actual configuration for `mc.mliem.com`, a home-hosted Purpur Minecraft server
-that supports Java, Bedrock (mobile/console), and cross-play, reachable through a
-scale-to-zero relay when nobody's connected from outside the LAN.
+that supports Java, Bedrock (mobile/console), and cross-play, reachable from outside
+the LAN through an always-on catcher tunnel.
 
 This repo is the real thing: actual `server.properties`, actual plugin configs,
 actual item/skill/quest definitions, pulled straight from the live box. It's the
@@ -22,27 +22,27 @@ included here as the `infra/` submodule.
   themselves, see `plugins.md` for why and where to get them).
 - `plugins.md` — the full plugin list: versions where confirmable, source links,
   and what got deliberately left out (player data, world data, secrets).
-- `infra/` — git submodule, [mc-serverless-proxy](https://github.com/mliem2k/mc-serverless-proxy):
-  the catcher/relay wake-on-demand infrastructure, the custom UDP relay for Bedrock,
-  Terraform/provisioning scripts, all with placeholder values instead of this
-  server's real ones. Also includes `home-server/mc_status_events_watcher.ts`
-  (added 2026-07-20): tails this server's own log for real-time join/leave events
-  and pushes them to mliem-landing's `/mc` status page, replacing an older
-  polling-based approach that could miss short sessions. Runs as a user-level
-  systemd service on the home server (no root needed), independent of the
-  relay-transfer watcher it shares a log-tailing pattern with.
+- `infra/`, git submodule, [mc-serverless-proxy](https://github.com/mliem2k/mc-serverless-proxy):
+  the catcher always-on tunnel infrastructure and the custom UDP relay for Bedrock,
+  with placeholder values instead of this server's real ones. The regional
+  low-latency relay VM this repo used to also front was fully decommissioned; only
+  the catcher-side pieces are live now. Also includes
+  `home-server/mc_status_events_watcher.ts` (added 2026-07-20): tails this server's
+  own log for real-time join/leave events and pushes them to mliem-landing's `/mc`
+  status page, replacing an older polling-based approach that could miss short
+  sessions. Runs as a user-level systemd service on the home server (no root
+  needed).
 
 ## The stack, briefly
 
 Purpur 1.21.4 (`purpur.yml`), `online-mode=false` (auth is handled in-plugin, see
-below), behind [XferHelper](https://github.com/mliem2k/XferHelper) (v1.0.5 as of
-2026-07-22; also adds an open-to-everyone `/relaystatus` command that reports live
-relay/catcher/home-server/DNS status in chat, a waiting lobby for players who join
-while the fast route isn't ready yet, and a relay-aware dynamic MOTD) for the
-catcher/relay handoff and Geyser + Floodgate + ViaVersion + TransferTool for
-Bedrock/cross-version support, with Geyser's `auth-type` set to `offline` so
-Bedrock/PE players can join without a linked Microsoft/Java account, matching the
-server's cracked-friendly Java side. Auth is **AuthMe** (not LibreLogin): both
+below), reachable through the catcher tunnel (`infra/`) plus Geyser + Floodgate +
+ViaVersion for Bedrock/cross-version support. XferHelper and the Geyser
+TransferTool extension, which used to hand players off to a separate low-latency
+relay VM, were removed along with that relay VM; Geyser's `auth-type` is set to
+`offline` so Bedrock/PE players can join without a linked Microsoft/Java account,
+matching the server's cracked-friendly Java side. Auth is **AuthMe** (not
+LibreLogin): both
 LibreLogin builds (0.23.1, pinned specifically to dodge a known upstream
 PacketEvents bug, and 0.24.0) sit disabled in `plugins/` as of 2026-07-18 and were
 never actually re-enabled after that fix was pinned, so AuthMe (kept originally as
